@@ -1,0 +1,42 @@
+function sendMessage() {
+  const inputField = document.getElementById("userInput");
+  const message = inputField.value.trim();
+  if (message === "") return;
+
+  const chatBox = document.getElementById("chatBox");
+
+  chatBox.innerHTML += `<p><b>You:</b> ${message}</p>`;
+
+  let reply = "";
+
+  const msg = message.toLowerCase();
+
+  if (msg.includes("hi") || msg.includes("hello")) {
+    reply = "Hello 👋 Welcome to Inspire Yourself AI. How can I help you?";
+  } 
+  else if (msg.includes("price") || msg.includes("cost")) {
+    reply = "Our chatbot services start from ₹1,999. Pricing depends on features.";
+  } 
+  else if (msg.includes("services")) {
+    reply = "We provide Website Chatbots, WhatsApp Automation and Instagram Auto DM bots.";
+  } 
+  else if (msg.includes("timing") || msg.includes("time")) {
+    reply = "Our working hours are 10 AM to 7 PM, Monday to Saturday.";
+  } 
+  else if (msg.includes("name")) {
+    reply = "I am Inspire Yourself AI Assistant 🤖";
+  } 
+  else if (msg.includes("business")) {
+    reply = "We help businesses automate customer support using AI chatbots.";
+  } 
+  else {
+    reply = "Thanks for your message. Please contact us on WhatsApp for detailed help.";
+  }
+
+  setTimeout(() => {
+    chatBox.innerHTML += `<p><b>Bot:</b> ${reply}</p>`;
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }, 500);
+
+  inputField.value = "";
+}
